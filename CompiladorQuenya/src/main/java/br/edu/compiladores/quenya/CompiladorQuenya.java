@@ -8,11 +8,9 @@ import org.antlr.v4.runtime.Token;
 public class CompiladorQuenya {
 
     public static void analisarTokens(String nomeTeste, String codigoFonte) {
-        System.out.println("\n==================================================");
         System.out.println("TESTE: " + nomeTeste);
-        System.out.println("==================================================");
 
-        // Seção 5: Garante a forma Unicode NFC antes da análise léxica
+        // 5: Garante a forma Unicode NFC antes da análise léxica
         String codigoNFC = Normalizer.normalize(codigoFonte, Normalizer.Form.NFC);
 
         CodePointCharStream input = CharStreams.fromString(codigoNFC);
@@ -28,7 +26,7 @@ public class CompiladorQuenya {
 
             if (nomeToken != null && nomeToken.startsWith("ERR_")) {
                 temErro = true;
-                System.out.printf("[ERRO LÉXICO] Linha %d, Coluna %d (%s): '%s'%n",
+                System.out.printf("[ERRO LEXICO] Linha %d, Coluna %d (%s): '%s'%n",
                         linha, coluna, nomeToken, token.getText());
             } else {
                 System.out.printf("Linha %2d | Col %2d | Token: %-18s | Texto: '%s'%n",
@@ -38,12 +36,12 @@ public class CompiladorQuenya {
         }
 
         if (!temErro) {
-            System.out.println("-> Resultado: Análise léxica concluída sem erros!");
+            System.out.println("- Resultado: Analise lexica concluida sem erros!");
         }
     }
 
     public static void main(String[] args) {
-        // Exemplo válido baseado na Seção 25 do PDF
+        // Exemplo valido
         String programaValido =
             "tamna {\n" +
             "    tengwë_et led = tengwë(13): undu;\n" +
@@ -58,9 +56,9 @@ public class CompiladorQuenya {
             "    á quet_metta \"Ola\\n\";\n" +
             "}";
 
-        analisarTokens("Programa Quenya Válido", programaValido);
+        analisarTokens("Programa Quenya Valido", programaValido);
 
-        // Exemplo com erros léxicos da Seção 26.1 do PDF
+        // Exemplo com erros lexicos 
         String programaComErros =
             "toldo a = 007;\n" +
             "toldo b = 0b102;\n" +
@@ -68,6 +66,6 @@ public class CompiladorQuenya {
             "lutu c = 1.2.3;\n" +
             "toldo d = @;";
 
-        analisarTokens("Casos de Erro Léxico (Seção 26.1)", programaComErros);
+        analisarTokens("Casos de Erro Lexico", programaComErros);
     }
 }
