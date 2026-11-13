@@ -1,11 +1,8 @@
-grammar Quenya;
+lexer grammar QuenyaLexer; 
 
-@header {
-    package br.edu.compiladores.quenya;
+@header { 
+    package br.edu.compiladores.quenya; 
 }
-
-// regra apenas para o ANTLR gerar e testar o Lexer na primeira etapa
-program : .*? EOF ;
 
 // 1. palavras reservada ( 5 e 6.1 - 58 tokens oficiais)
 HARDWARE           : 'tamna' ;
@@ -124,9 +121,7 @@ ID
     | '_'
     ;
 
-// ============================================================================
-// 5. ESPAÇOS E COMENTÁRIOS (Seção 21)
-// ============================================================================
+// 5. espaços e comentarios ( 21)
 WS            : [ \t\r\n]+ -> skip ;
 COMMENT_LINE  : '//' ~[\r\n]* -> skip ;
 COMMENT_BLOCK : '/*' .*? '*/' -> skip ;
@@ -143,8 +138,8 @@ ERR_NUMERO_INVALIDO
     | [0-9]+ [\p{L}\p{M}_] [\p{L}\p{M}0-9_]*
     ;
 
-ERR_ID_RESERVADO        : '__' [\p{L}\p{M}0-9_]* ;
+ERR_ID_RESERVADO : '__' [\p{L}\p{M}0-9_]* ;
 ERR_STRING_ESCAPE       : '"' ( '\\' . | ~["\\\r\n] )* '"' ;
 ERR_STRING_NAO_FECHADA  : '"' ( '\\' . | ~["\\\r\n] )* ;
-ERR_COMENTARIO_FECHADO  : '/*' .*? EOF ;
+ERR_COMENTARIO_NAO_FECHADO : '/*' .*? EOF ;
 ERR_CARACTERE_INVALIDO  : . ;
