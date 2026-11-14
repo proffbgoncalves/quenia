@@ -1,12 +1,20 @@
 package br.edu.compiladores.quenya;
 
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.text.Normalizer;
+import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CodePointCharStream;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
 
 public class CompiladorQuenya {
 
+    /**
+    *
+    * @author joanafelizardo
+    */
     public static void analisarTokens(String nomeTeste, String codigoFonte) {
         System.out.println("TESTE: " + nomeTeste);
 
@@ -40,7 +48,10 @@ public class CompiladorQuenya {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {     
+        // Testes escritos pel Claude, pra entender como seria uma forma de testar; 
+        // Descontinuado em 13/11 por Pedro (não tem necessidade de teste ainda agora).
+
         // Exemplo valido
         String programaValido =
             "tamna {\n" +
