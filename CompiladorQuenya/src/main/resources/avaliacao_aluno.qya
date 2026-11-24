@@ -1,0 +1,23 @@
+/**
+ *
+ * @author pedro
+ */
+
+tamna {}
+
+tanca lutu NOTA_APROVACAO = 6.0;
+
+yesta {
+    téma 9600;
+}
+
+carda {
+    lutu nota = 8.5;
+    naitië aprovado = ui;
+    aprovado = nota >= NOTA_APROVACAO;
+    qui aprovado == naitë {
+        á quet_metta "Aluno aprovado";
+    } hyana {
+        á quet_metta "Aluno reprovado";
+    }
+}
